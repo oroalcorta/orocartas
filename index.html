@@ -76,11 +76,11 @@ h4 {
       padding-bottom: 60px;
     }
     .card-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      justify-content: center;
-    }
+  display: grid;
+  grid-template-columns: repeat(6, 60px); /* 👈 fijo igual que la carta */
+  gap: 2px;
+  justify-content: center;
+}
     .card {
   width: 60px;
   height: 80px;
@@ -199,7 +199,7 @@ h4 {
 <body>
   <div id="start-screen">
   <div class="container">
-    <h1 style="color: gold; font-size: 1.8rem; margin-top: 10px; text-shadow: 0 0 10px gold, 0 0 20px #fff200;">🃏 CASINO ORO - CARTAS 🃏</h1>
+    <h1 style="color: gold; font-size: 1.8rem; margin-top: 10px; text-shadow: 0 0 10px gold, 0 0 20px #fff200;">🃏CASINO ORO - CARTAS🃏</h1>
     
     <input id="username" placeholder="🤴 INGRESÁ TU USUARIO 🥇"
       style="width: 90%; padding: 1rem; font-size: 1.1rem; margin: 10px auto; border-radius: 10px; border: none; text-align: center;"
@@ -295,10 +295,12 @@ let ganador = false;
   const input = document.getElementById('username');
   const nombre = input.value.trim();
   if (!nombre) {
-    input.classList.add('error');
-    input.style.border = '2px solid red';
-    return;
-  }
+  input.classList.add('error');
+  input.style.border = '2px solid red';
+  return;
+}
+input.classList.remove('error');
+input.style.border = 'none';
   username = nombre;
   await fpReady;
   while (!fingerprint) await new Promise(r => setTimeout(r, 50));
